@@ -12,10 +12,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "post")
 public class Post extends Timestamped{
@@ -31,9 +33,13 @@ public class Post extends Timestamped{
     @Column
     private String content;
 
+    @Column
+    private Long likeCount;
+
     public Post(User user, String content) {
         this.user = user;
         this.content = content;
+        this.likeCount = 0L;
     }
 
     public void update(PostRequestDto requestDto) {

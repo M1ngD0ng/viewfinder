@@ -12,6 +12,7 @@ public class CommentResponseDto {
     private String content;
     private String createAt;
     private String modifiedAt;
+    private Long likeCount;
 
 
     public CommentResponseDto(Comment comment){
@@ -21,5 +22,6 @@ public class CommentResponseDto {
         this.content = comment.getContent();
         this.createAt = comment.getCreatedAt();
         this.modifiedAt = comment.getModifiedAt();
+        this.likeCount = comment.getLikeCount();
     }
 }
