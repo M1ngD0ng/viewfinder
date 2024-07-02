@@ -48,6 +48,13 @@ public class GlobalExceptionController extends ResponseEntityExceptionHandler {
         ErrorCode errorCode = e.getErrorCode();
         return handleExceptionInternal(errorCode, e);
     }
+    // PatternMismatchException 예외처리
+    @ExceptionHandler(CommonException.class)
+    public ResponseEntity<Object> handleCustomException(CommonException e) {
+        log.warn("Common Exception");
+        ErrorCode errorCode = e.getErrorCode();
+        return handleExceptionInternal(errorCode, e);
+    }
 
 
     // MethodArgumentNotValidException 예외처리

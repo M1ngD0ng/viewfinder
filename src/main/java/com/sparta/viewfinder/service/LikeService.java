@@ -2,9 +2,7 @@ package com.sparta.viewfinder.service;
 
 import com.sparta.viewfinder.dto.LikeResponseDto;
 import com.sparta.viewfinder.entity.*;
-import com.sparta.viewfinder.exception.CommonErrorCode;
-import com.sparta.viewfinder.exception.NotFoundException;
-import com.sparta.viewfinder.exception.PostErrorCode;
+import com.sparta.viewfinder.exception.*;
 import com.sparta.viewfinder.repository.CommentRepository;
 import com.sparta.viewfinder.repository.LikeRepository;
 import com.sparta.viewfinder.repository.PostRepository;
@@ -32,6 +30,11 @@ public class LikeService {
         Post post = postRepository.findById(contentId).orElseThrow(
                 () -> new NotFoundException(PostErrorCode.POST_NOT_FOUND)
         );
+
+        if(post.getUser().getId().equals(user.getId())){
+            throw new CommonException(LikeErrorCode.SELF_LIKE_ERROR);
+        }
+
         Optional<Like> isLiked = likeRepository.findByUserIdAndContentIdAndContentsType(user.getId(), contentId, ContentsTypeEnum.POST);
         if (isLiked.isPresent()) {
             post.setLikeCount(post.getLikeCount() - 1);
@@ -62,7 +65,9 @@ public class LikeService {
         Comment comment = commentRepository.findById(contentId).orElseThrow(
                 ()-> new NotFoundException(CommonErrorCode.RESOURCE_NOT_FOUND)
         );
-
+        if(comment.getUser().getId().equals(user.getId())){
+            throw new CommonException(LikeErrorCode.SELF_LIKE_ERROR);
+        }
         Optional<Like> isLiked = likeRepository.findByUserIdAndContentIdAndContentsType(user.getId(), contentId, ContentsTypeEnum.COMMENT);
         if (isLiked.isPresent()) {
             comment.setLikeCount(comment.getLikeCount() - 1);
