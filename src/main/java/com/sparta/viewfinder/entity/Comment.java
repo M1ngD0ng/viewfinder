@@ -12,11 +12,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "comment")
 public class Comment extends Timestamped{
@@ -37,10 +39,14 @@ public class Comment extends Timestamped{
     @Column(nullable = false)
     private String content;
 
+    @Column
+    private Long likeCount;
+
     public Comment(User user, Post post, String content) {
         this.user = user;
         this.post = post;
         this.content = content;
+        this.likeCount = 0L;
     }
 
     public void update(CommentRequestDto commentRequestDto) {
