@@ -1,6 +1,6 @@
 package com.sparta.viewfinder.repository;
 
-import com.sparta.viewfinder.entity.Profile;
+import com.sparta.viewfinder.entity.profile.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

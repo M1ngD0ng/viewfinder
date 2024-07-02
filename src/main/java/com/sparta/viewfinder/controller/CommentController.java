@@ -1,8 +1,7 @@
 package com.sparta.viewfinder.controller;
 
-import com.sparta.viewfinder.dto.CommentRequestDto;
-import com.sparta.viewfinder.dto.CommentResponseDto;
-import com.sparta.viewfinder.entity.User;
+import com.sparta.viewfinder.dto.comment.CommentRequestDto;
+import com.sparta.viewfinder.dto.comment.CommentResponseDto;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import com.sparta.viewfinder.service.CommentService;
 import lombok.RequiredArgsConstructor;

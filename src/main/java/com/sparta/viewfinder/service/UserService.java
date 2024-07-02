@@ -1,13 +1,17 @@
 package com.sparta.viewfinder.service;
 
-import com.sparta.viewfinder.dto.SignUpRequestDto;
-import com.sparta.viewfinder.dto.SignUpResponseDto;
-import com.sparta.viewfinder.dto.UserUpdateRequestDto;
-import com.sparta.viewfinder.entity.PasswordHistory;
-import com.sparta.viewfinder.entity.User;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.entity.UserStatusEnum;
-import com.sparta.viewfinder.exception.*;
+import com.sparta.viewfinder.dto.user.SignUpRequestDto;
+import com.sparta.viewfinder.dto.user.SignUpResponseDto;
+import com.sparta.viewfinder.dto.user.UserUpdateRequestDto;
+import com.sparta.viewfinder.entity.user.PasswordHistory;
+import com.sparta.viewfinder.entity.user.User;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.entity.constant.UserStatusEnum;
+import com.sparta.viewfinder.exception.errorcode.EmailErrorCode;
+import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
+import com.sparta.viewfinder.exception.exception.DuplicatedException;
+import com.sparta.viewfinder.exception.exception.MismatchException;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.repository.PasswordHistoryRepository;
 import com.sparta.viewfinder.repository.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;

@@ -1,10 +1,10 @@
 package com.sparta.viewfinder.security;
 
-import com.sparta.viewfinder.dto.LoginRequestDto;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.entity.UserStatusEnum;
-import com.sparta.viewfinder.exception.CommonErrorCode;
-import com.sparta.viewfinder.exception.NotFoundException;
+import com.sparta.viewfinder.dto.user.LoginRequestDto;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.entity.constant.UserStatusEnum;
+import com.sparta.viewfinder.exception.errorcode.CommonErrorCode;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.jwt.JwtTokenHelper;
 import java.io.IOException;
 

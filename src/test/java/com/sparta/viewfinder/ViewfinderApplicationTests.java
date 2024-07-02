@@ -1,7 +1,7 @@
 package com.sparta.viewfinder;
 
-import com.sparta.viewfinder.entity.Post;
-import com.sparta.viewfinder.entity.User;
+import com.sparta.viewfinder.entity.post.Post;
+import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.repository.PostRepository;
 import com.sparta.viewfinder.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;

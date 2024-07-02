@@ -1,17 +1,14 @@
 package com.sparta.viewfinder.service;
 
-import com.sparta.viewfinder.dto.PostRequestDto;
-import com.sparta.viewfinder.dto.PostResponseDto;
-import com.sparta.viewfinder.entity.Comment;
-import com.sparta.viewfinder.entity.Post;
-import com.sparta.viewfinder.entity.User;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.exception.CommentErrorCode;
-import com.sparta.viewfinder.exception.CommonErrorCode;
-import com.sparta.viewfinder.exception.MismatchException;
-import com.sparta.viewfinder.exception.NotFoundException;
-import com.sparta.viewfinder.exception.PostErrorCode;
-import com.sparta.viewfinder.exception.UserErrorCode;
+import com.sparta.viewfinder.dto.post.PostRequestDto;
+import com.sparta.viewfinder.dto.post.PostResponseDto;
+import com.sparta.viewfinder.entity.post.Post;
+import com.sparta.viewfinder.entity.user.User;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.exception.exception.MismatchException;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
+import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
+import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.repository.PostRepository;
 import com.sparta.viewfinder.repository.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
