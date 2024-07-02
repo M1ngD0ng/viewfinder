@@ -20,8 +20,9 @@ public class LikeController {
                                                       @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(likeService.postLikeToggle(contentId, userDetails.getUser()));
     }
-    @PostMapping("/comments/{contentId}/like")
-    public ResponseEntity<LikeResponseDto> commentLikeToggle(@PathVariable("contentId") Long contentId,
+    @PostMapping("/posts/{postId}/comments/{contentId}/like")
+    public ResponseEntity<LikeResponseDto> commentLikeToggle(@PathVariable("postId") Long postId,
+                                                             @PathVariable("contentId") Long contentId,
                                                           @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(likeService.commentLikeToggle(contentId, userDetails.getUser()));
     }

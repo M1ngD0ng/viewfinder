@@ -48,8 +48,8 @@ public class CommentService {
         return new CommentResponseDto(comment);
     }
 
-    // 특정 게시물의 댓글 조회
-    public List<CommentResponseDto> readComment(Long postId) {
+    // 게시물의 전체 댓글 조회
+    public List<CommentResponseDto> readCommentAll(Long postId) {
         // 게시물을 찾을 수 없을 때 -> Post에 관한 ErrorCode 클래스 만들고 사용
         if (!postRepository.existsById(postId)) {
             throw new NotFoundException(PostErrorCode.POST_NOT_FOUND);
@@ -64,18 +64,40 @@ public class CommentService {
         }
         return responseDtoList;
     }
+    // 게시물의 특정 댓글 조회
+    public CommentResponseDto readComment(Long postId, Long commentId) {
+        // 게시물을 찾을 수 없을 때 -> Post에 관한 ErrorCode 클래스 만들고 사용
+        if (!postRepository.existsById(postId)) {
+            throw new NotFoundException(PostErrorCode.POST_NOT_FOUND);
+        }
+
+        Comment comment = commentRepository.findById(commentId).orElseThrow(
+                () -> new NotFoundException(CommentErrorCode.COMMENT_NOT_FOUND)
+        );
+        CommentResponseDto responseDto = new CommentResponseDto(comment);
+
+        return responseDto;
+    }
 
     // 댓글 수정
     @Transactional
-    public CommentResponseDto updateComment(
-        UserDetailsImpl userDetails, Long commentId, CommentRequestDto requestDto) {
+    public CommentResponseDto updateComment(Long postId, UserDetailsImpl userDetails, Long commentId, CommentRequestDto requestDto) {
+        // 게시물을 찾을 수 없을 때 -> Post에 관한 ErrorCode 클래스 만들고 사용
+        if (!postRepository.existsById(postId)) {
+            throw new NotFoundException(PostErrorCode.POST_NOT_FOUND);
+        }
         Comment comment = findComment(commentId, userDetails.getUser());
         comment.update(requestDto);
         return new CommentResponseDto(comment);
     }
 
     // 댓글 삭제
-    public void deleteComment(Long commentId, UserDetailsImpl userDetails) {
+    public void deleteComment(Long postId, Long commentId, UserDetailsImpl userDetails) {
+        // 게시물을 찾을 수 없을 때 -> Post에 관한 ErrorCode 클래스 만들고 사용
+        if (!postRepository.existsById(postId)) {
+            throw new NotFoundException(PostErrorCode.POST_NOT_FOUND);
+        }
+
         Comment comment = findComment(commentId, userDetails.getUser());
         commentRepository.delete(comment);
     }
