@@ -1,6 +1,9 @@
 package com.sparta.viewfinder.controller;
 
-import com.sparta.viewfinder.dto.*;
+import com.sparta.viewfinder.dto.profile.ProfileAllResponseDto;
+import com.sparta.viewfinder.dto.profile.ProfileDetailResponseDto;
+import com.sparta.viewfinder.dto.profile.ProfileUpdateRequestDto;
+import com.sparta.viewfinder.dto.profile.ProfileUpdateResponseDto;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import com.sparta.viewfinder.service.ProfileService;
 import lombok.RequiredArgsConstructor;

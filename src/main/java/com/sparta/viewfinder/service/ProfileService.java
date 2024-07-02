@@ -1,14 +1,13 @@
 package com.sparta.viewfinder.service;
 
-import com.sparta.viewfinder.dto.ProfileAllResponseDto;
-import com.sparta.viewfinder.dto.ProfileDetailResponseDto;
-import com.sparta.viewfinder.dto.ProfileUpdateRequestDto;
-import com.sparta.viewfinder.dto.ProfileUpdateResponseDto;
-import com.sparta.viewfinder.entity.Profile;
-import com.sparta.viewfinder.entity.User;
-import com.sparta.viewfinder.exception.CommonErrorCode;
-import com.sparta.viewfinder.exception.NotFoundException;
-import com.sparta.viewfinder.exception.UserErrorCode;
+import com.sparta.viewfinder.dto.profile.ProfileAllResponseDto;
+import com.sparta.viewfinder.dto.profile.ProfileDetailResponseDto;
+import com.sparta.viewfinder.dto.profile.ProfileUpdateRequestDto;
+import com.sparta.viewfinder.dto.profile.ProfileUpdateResponseDto;
+import com.sparta.viewfinder.entity.profile.Profile;
+import com.sparta.viewfinder.entity.user.User;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
+import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.repository.ProfileRepository;
 import com.sparta.viewfinder.repository.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;

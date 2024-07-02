@@ -1,7 +1,7 @@
 package com.sparta.viewfinder.controller;
 
-import com.sparta.viewfinder.dto.PostRequestDto;
-import com.sparta.viewfinder.dto.PostResponseDto;
+import com.sparta.viewfinder.dto.post.PostRequestDto;
+import com.sparta.viewfinder.dto.post.PostResponseDto;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import com.sparta.viewfinder.service.PostService;
 import lombok.RequiredArgsConstructor;

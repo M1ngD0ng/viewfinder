@@ -1,10 +1,10 @@
 package com.sparta.viewfinder.jwt;
 
-import com.sparta.viewfinder.entity.User;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.entity.UserStatusEnum;
-import com.sparta.viewfinder.exception.NotFoundException;
-import com.sparta.viewfinder.exception.UserErrorCode;
+import com.sparta.viewfinder.entity.user.User;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.entity.constant.UserStatusEnum;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
+import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.repository.UserRepository;
 import java.security.Key;
 import java.util.Base64;

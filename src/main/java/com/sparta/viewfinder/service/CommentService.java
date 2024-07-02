@@ -1,18 +1,21 @@
 package com.sparta.viewfinder.service;
 
-import com.sparta.viewfinder.dto.CommentRequestDto;
-import com.sparta.viewfinder.dto.CommentResponseDto;
-import com.sparta.viewfinder.entity.Comment;
-import com.sparta.viewfinder.entity.Post;
-import com.sparta.viewfinder.entity.User;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.exception.*;
+import com.sparta.viewfinder.dto.comment.CommentRequestDto;
+import com.sparta.viewfinder.dto.comment.CommentResponseDto;
+import com.sparta.viewfinder.entity.comment.Comment;
+import com.sparta.viewfinder.entity.post.Post;
+import com.sparta.viewfinder.entity.user.User;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.exception.errorcode.CommentErrorCode;
+import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
+import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
+import com.sparta.viewfinder.exception.exception.MismatchException;
+import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.repository.CommentRepository;
 import com.sparta.viewfinder.repository.PostRepository;
 import com.sparta.viewfinder.repository.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,11 +1,10 @@
 package com.sparta.viewfinder.controller;
 
-import com.sparta.viewfinder.dto.LoginRequestDto;
-import com.sparta.viewfinder.dto.SignUpRequestDto;
-import com.sparta.viewfinder.dto.UserUpdateRequestDto;
-import com.sparta.viewfinder.dto.WithDrawUserRequestDto;
-import com.sparta.viewfinder.entity.UserRoleEnum;
-import com.sparta.viewfinder.entity.UserStatusEnum;
+import com.sparta.viewfinder.dto.user.SignUpRequestDto;
+import com.sparta.viewfinder.dto.user.UserUpdateRequestDto;
+import com.sparta.viewfinder.dto.user.WithDrawUserRequestDto;
+import com.sparta.viewfinder.entity.constant.UserRoleEnum;
+import com.sparta.viewfinder.entity.constant.UserStatusEnum;
 import com.sparta.viewfinder.jwt.JwtTokenHelper;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import com.sparta.viewfinder.service.UserService;
