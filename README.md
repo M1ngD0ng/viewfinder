@@ -1,4 +1,4 @@
-# LunchRecommender
+# ViewFinder
 스냅 사진을 찍고 싶은 모델과 포토그래퍼를 매칭하는 서비스 
 
 ## ✔️ Team
