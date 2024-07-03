@@ -1,7 +1,7 @@
 package com.sparta.viewfinder.security;
 
 import com.sparta.viewfinder.entity.user.User;
-import com.sparta.viewfinder.entity.constant.UserStatusEnum;
+import com.sparta.viewfinder.constant.UserStatusEnum;
 import java.util.ArrayList;
 import java.util.Collection;
 

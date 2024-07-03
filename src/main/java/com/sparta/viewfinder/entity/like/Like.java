@@ -1,7 +1,7 @@
 package com.sparta.viewfinder.entity.like;
 
-import com.sparta.viewfinder.entity.constant.ContentsTypeEnum;
-import com.sparta.viewfinder.entity.constant.Timestamped;
+import com.sparta.viewfinder.constant.ContentsTypeEnum;
+import com.sparta.viewfinder.constant.Timestamped;
 import com.sparta.viewfinder.entity.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;

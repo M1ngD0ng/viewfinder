@@ -1,8 +1,8 @@
 package com.sparta.viewfinder.entity.comment;
 
-import com.sparta.viewfinder.dto.comment.CommentRequestDto;
+import com.sparta.viewfinder.comment.dto.CommentRequestDto;
 import com.sparta.viewfinder.entity.post.Post;
-import com.sparta.viewfinder.entity.constant.Timestamped;
+import com.sparta.viewfinder.constant.Timestamped;
 import com.sparta.viewfinder.entity.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

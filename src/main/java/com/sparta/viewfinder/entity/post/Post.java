@@ -1,7 +1,7 @@
 package com.sparta.viewfinder.entity.post;
 
-import com.sparta.viewfinder.dto.post.PostRequestDto;
-import com.sparta.viewfinder.entity.constant.Timestamped;
+import com.sparta.viewfinder.post.dto.PostRequestDto;
+import com.sparta.viewfinder.constant.Timestamped;
 import com.sparta.viewfinder.entity.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

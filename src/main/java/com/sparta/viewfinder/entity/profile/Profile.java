@@ -1,7 +1,7 @@
 package com.sparta.viewfinder.entity.profile;
 
-import com.sparta.viewfinder.dto.profile.ProfileUpdateRequestDto;
-import com.sparta.viewfinder.entity.constant.Timestamped;
+import com.sparta.viewfinder.profile.dto.ProfileUpdateRequestDto;
+import com.sparta.viewfinder.constant.Timestamped;
 import com.sparta.viewfinder.entity.user.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

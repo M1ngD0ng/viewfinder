@@ -1,6 +1,6 @@
 package com.sparta.viewfinder.entity.user;
 
-import com.sparta.viewfinder.entity.constant.Timestamped;
+import com.sparta.viewfinder.constant.Timestamped;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

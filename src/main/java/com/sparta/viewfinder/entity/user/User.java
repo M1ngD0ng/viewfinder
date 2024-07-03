@@ -1,12 +1,14 @@
 package com.sparta.viewfinder.entity.user;
 
-import com.sparta.viewfinder.entity.constant.Timestamped;
-import com.sparta.viewfinder.entity.constant.UserRoleEnum;
-import com.sparta.viewfinder.entity.constant.UserStatusEnum;
+import com.sparta.viewfinder.constant.Timestamped;
+import com.sparta.viewfinder.constant.UserRoleEnum;
+import com.sparta.viewfinder.constant.UserStatusEnum;
 import com.sparta.viewfinder.entity.profile.Profile;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -32,7 +34,7 @@ public class User extends Timestamped {
 
     private String refreshToken;
 
-    private String statusUpdate;
+    private LocalDateTime statusUpdate;
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
