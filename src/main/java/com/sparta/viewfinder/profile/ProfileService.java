@@ -1,13 +1,12 @@
 package com.sparta.viewfinder.profile;
 
-import com.sparta.viewfinder.entity.profile.Profile;
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.profile.dto.ProfileAllResponseDto;
 import com.sparta.viewfinder.profile.dto.ProfileDetailResponseDto;
 import com.sparta.viewfinder.profile.dto.ProfileUpdateRequestDto;
 import com.sparta.viewfinder.profile.dto.ProfileUpdateResponseDto;
+import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;

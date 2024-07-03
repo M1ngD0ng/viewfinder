@@ -1,7 +1,5 @@
 package com.sparta.viewfinder.user;
 
-import com.sparta.viewfinder.entity.user.PasswordHistory;
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.constant.UserRoleEnum;
 import com.sparta.viewfinder.constant.UserStatusEnum;
 import com.sparta.viewfinder.exception.errorcode.EmailErrorCode;

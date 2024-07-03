@@ -1,10 +1,10 @@
 package com.sparta.viewfinder.security;
 
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.constant.UserStatusEnum;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.sparta.viewfinder.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

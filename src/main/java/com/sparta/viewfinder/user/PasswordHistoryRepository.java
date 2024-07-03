@@ -1,6 +1,5 @@
 package com.sparta.viewfinder.user;
 
-import com.sparta.viewfinder.entity.user.PasswordHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

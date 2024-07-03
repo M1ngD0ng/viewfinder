@@ -1,4 +1,4 @@
-package com.sparta.viewfinder.entity.user;
+package com.sparta.viewfinder.user;
 
 import com.sparta.viewfinder.constant.Timestamped;
 import jakarta.persistence.*;

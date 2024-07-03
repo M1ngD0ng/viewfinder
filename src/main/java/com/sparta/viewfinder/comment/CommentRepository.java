@@ -1,6 +1,5 @@
 package com.sparta.viewfinder.comment;
 
-import com.sparta.viewfinder.entity.comment.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

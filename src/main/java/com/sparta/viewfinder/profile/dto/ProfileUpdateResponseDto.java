@@ -1,8 +1,8 @@
 package com.sparta.viewfinder.profile.dto;
 
-import com.sparta.viewfinder.entity.profile.Profile;
 import lombok.Getter;
 
+import com.sparta.viewfinder.profile.Profile;
 import java.time.LocalDateTime;
 
 @Getter

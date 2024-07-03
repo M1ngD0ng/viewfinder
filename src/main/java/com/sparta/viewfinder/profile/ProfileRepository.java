@@ -1,6 +1,5 @@
 package com.sparta.viewfinder.profile;
 
-import com.sparta.viewfinder.entity.profile.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

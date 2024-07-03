@@ -1,6 +1,6 @@
 package com.sparta.viewfinder.comment.dto;
 
-import com.sparta.viewfinder.entity.comment.Comment;
+import com.sparta.viewfinder.comment.Comment;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
 package com.sparta.viewfinder.post.dto;
 
-import com.sparta.viewfinder.entity.post.Post;
+import com.sparta.viewfinder.post.Post;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

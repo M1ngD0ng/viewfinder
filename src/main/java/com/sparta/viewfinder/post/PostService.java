@@ -1,7 +1,5 @@
 package com.sparta.viewfinder.post;
 
-import com.sparta.viewfinder.entity.post.Post;
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.constant.UserRoleEnum;
 import com.sparta.viewfinder.exception.exception.MismatchException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
@@ -9,6 +7,7 @@ import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.post.dto.PostRequestDto;
 import com.sparta.viewfinder.post.dto.PostResponseDto;
+import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;

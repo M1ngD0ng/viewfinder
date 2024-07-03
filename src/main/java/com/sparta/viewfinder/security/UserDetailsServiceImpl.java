@@ -1,10 +1,10 @@
 package com.sparta.viewfinder.security;
 
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.constant.UserStatusEnum;
 import com.sparta.viewfinder.exception.exception.MismatchException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
+import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

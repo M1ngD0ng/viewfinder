@@ -1,6 +1,6 @@
 package com.sparta.viewfinder.profile.dto;
 
-import com.sparta.viewfinder.entity.profile.Profile;
+import com.sparta.viewfinder.profile.Profile;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

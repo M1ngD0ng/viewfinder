@@ -1,6 +1,5 @@
 package com.sparta.viewfinder.user;
 
-import com.sparta.viewfinder.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

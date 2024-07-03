@@ -1,17 +1,16 @@
 package com.sparta.viewfinder.like;
 
-import com.sparta.viewfinder.entity.comment.Comment;
+import com.sparta.viewfinder.comment.Comment;
 import com.sparta.viewfinder.constant.ContentsTypeEnum;
-import com.sparta.viewfinder.entity.like.Like;
-import com.sparta.viewfinder.entity.post.Post;
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.exception.errorcode.CommonErrorCode;
 import com.sparta.viewfinder.exception.errorcode.LikeErrorCode;
 import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
 import com.sparta.viewfinder.exception.exception.CommonException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.comment.CommentRepository;
+import com.sparta.viewfinder.post.Post;
 import com.sparta.viewfinder.post.PostRepository;
+import com.sparta.viewfinder.user.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

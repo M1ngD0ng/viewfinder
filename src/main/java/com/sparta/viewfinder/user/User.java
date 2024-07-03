@@ -1,9 +1,9 @@
-package com.sparta.viewfinder.entity.user;
+package com.sparta.viewfinder.user;
 
 import com.sparta.viewfinder.constant.Timestamped;
 import com.sparta.viewfinder.constant.UserRoleEnum;
 import com.sparta.viewfinder.constant.UserStatusEnum;
-import com.sparta.viewfinder.entity.profile.Profile;
+import com.sparta.viewfinder.profile.Profile;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

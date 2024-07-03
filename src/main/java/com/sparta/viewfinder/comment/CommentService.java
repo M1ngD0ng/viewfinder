@@ -2,16 +2,15 @@ package com.sparta.viewfinder.comment;
 
 import com.sparta.viewfinder.comment.dto.CommentRequestDto;
 import com.sparta.viewfinder.comment.dto.CommentResponseDto;
-import com.sparta.viewfinder.entity.comment.Comment;
-import com.sparta.viewfinder.entity.post.Post;
-import com.sparta.viewfinder.entity.user.User;
 import com.sparta.viewfinder.constant.UserRoleEnum;
 import com.sparta.viewfinder.exception.errorcode.CommentErrorCode;
 import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.exception.exception.MismatchException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
+import com.sparta.viewfinder.post.Post;
 import com.sparta.viewfinder.post.PostRepository;
+import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
