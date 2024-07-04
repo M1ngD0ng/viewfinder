@@ -1,5 +1,6 @@
 package com.sparta.viewfinder.like;
 
+import com.sparta.viewfinder.comment.dto.CommentResponseDto;
 import com.sparta.viewfinder.post.dto.PostResponseDto;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,13 @@ public class LikeController {
     }
 
     @GetMapping("/likes/posts")
-    public ResponseEntity<Page<PostResponseDto>> getLikedPost(@RequestParam(value = "page", defaultValue = "1") int page,
+    public ResponseEntity<Page<PostResponseDto>> getLikedPosts(@RequestParam(value = "page", defaultValue = "1") int page,
                                                               @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return ResponseEntity.ok(likeService.getLikedPost(page - 1, userDetails.getUser()));
+        return ResponseEntity.ok(likeService.getLikedPosts(page - 1, userDetails.getUser()));
+    }
+    @GetMapping("/likes/comments")
+    public ResponseEntity<Page<CommentResponseDto>> getLikedComments(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                                 @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(likeService.getLikedComments(page - 1, userDetails.getUser()));
     }
 }

@@ -1,6 +1,7 @@
 package com.sparta.viewfinder.like;
 
 import com.sparta.viewfinder.comment.Comment;
+import com.sparta.viewfinder.comment.dto.CommentResponseDto;
 import com.sparta.viewfinder.constant.ContentsTypeEnum;
 import com.sparta.viewfinder.exception.errorcode.CommonErrorCode;
 import com.sparta.viewfinder.exception.errorcode.LikeErrorCode;
@@ -103,7 +104,7 @@ public class LikeService {
         return responseDto;
     }
 
-    public Page<PostResponseDto> getLikedPost(int page, User user) {
+    public Page<PostResponseDto> getLikedPosts(int page, User user) {
         String sortBy = "createdAt";
         Sort.Direction direction = Sort.Direction.DESC;
         Sort sort = Sort.by(direction, sortBy);
@@ -112,5 +113,16 @@ public class LikeService {
         Page<Post> postList = likeRepository.searchLikedPost(user, pageable);
 
         return postList.map(PostResponseDto::new);
+    }
+
+    public Page<CommentResponseDto> getLikedComments(int page, User user) {
+        String sortBy = "createdAt";
+        Sort.Direction direction = Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE, sort);
+
+        Page<Comment> commentList = likeRepository.searchLikedComment(user, pageable);
+
+        return commentList.map(CommentResponseDto::new);
     }
 }

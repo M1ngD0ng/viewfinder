@@ -2,6 +2,8 @@ package com.sparta.viewfinder.like.repository;
 
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.sparta.viewfinder.comment.Comment;
+import com.sparta.viewfinder.comment.QComment;
 import com.sparta.viewfinder.constant.ContentsTypeEnum;
 import com.sparta.viewfinder.like.QLike;
 import com.sparta.viewfinder.post.Post;
@@ -43,6 +45,34 @@ public class LikeRepositoryQueryImpl implements LikeRepositoryQuery {
                 .where(
                         like.user.id.eq(user.getId())
                                 .and(like.contentsType.eq(ContentsTypeEnum.POST))
+                )
+                .fetch().get(0);
+        return new PageImpl<>(postList, pageable, totalSize);
+    }
+
+    @Override
+    public Page<Comment> searchLikedComment(User user, Pageable pageable) {
+        QComment comment = QComment.comment;
+        QLike like = QLike.like;
+
+        List<Comment> postList = jpaQueryFactory.select(comment)
+                .from(like)
+                .join(comment).on(like.contentId.eq(comment.id))
+                .where(
+                        like.user.id.eq(user.getId())
+                                .and(like.contentsType.eq(ContentsTypeEnum.COMMENT))
+                )
+                .orderBy(comment.createdAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long totalSize = jpaQueryFactory.select(Wildcard.count)
+                .from(like)
+                .join(comment).on(like.contentId.eq(comment.id))
+                .where(
+                        like.user.id.eq(user.getId())
+                                .and(like.contentsType.eq(ContentsTypeEnum.COMMENT))
                 )
                 .fetch().get(0);
         return new PageImpl<>(postList, pageable, totalSize);
