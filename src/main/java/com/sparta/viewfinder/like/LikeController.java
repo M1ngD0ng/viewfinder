@@ -1,12 +1,13 @@
 package com.sparta.viewfinder.like;
 
+import com.sparta.viewfinder.comment.dto.CommentResponseDto;
+import com.sparta.viewfinder.post.dto.PostResponseDto;
 import com.sparta.viewfinder.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,12 +16,25 @@ public class LikeController {
 
     @PostMapping("/posts/{contentId}/like")
     public ResponseEntity<LikeResponseDto> postLikeToggle(@PathVariable("contentId") Long contentId,
-                                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
+                                                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(likeService.postLikeToggle(contentId, userDetails.getUser()));
     }
-    @PostMapping("/comments/{contentId}/like")
-    public ResponseEntity<LikeResponseDto> commentLikeToggle(@PathVariable("contentId") Long contentId,
-                                                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+    @PostMapping("/posts/{postId}/comments/{contentId}/like")
+    public ResponseEntity<LikeResponseDto> commentLikeToggle(@PathVariable("postId") Long postId,
+                                                             @PathVariable("contentId") Long contentId,
+                                                             @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(likeService.commentLikeToggle(contentId, userDetails.getUser()));
+    }
+
+    @GetMapping("/likes/posts")
+    public ResponseEntity<Page<PostResponseDto>> getLikedPosts(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                              @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(likeService.getLikedPosts(page - 1, userDetails.getUser()));
+    }
+    @GetMapping("/likes/comments")
+    public ResponseEntity<Page<CommentResponseDto>> getLikedComments(@RequestParam(value = "page", defaultValue = "1") int page,
+                                                                 @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(likeService.getLikedComments(page - 1, userDetails.getUser()));
     }
 }

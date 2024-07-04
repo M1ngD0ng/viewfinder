@@ -1,6 +1,7 @@
 package com.sparta.viewfinder.like;
 
 import com.sparta.viewfinder.comment.Comment;
+import com.sparta.viewfinder.comment.dto.CommentResponseDto;
 import com.sparta.viewfinder.constant.ContentsTypeEnum;
 import com.sparta.viewfinder.exception.errorcode.CommonErrorCode;
 import com.sparta.viewfinder.exception.errorcode.LikeErrorCode;
@@ -8,11 +9,17 @@ import com.sparta.viewfinder.exception.errorcode.PostErrorCode;
 import com.sparta.viewfinder.exception.exception.CommonException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.comment.CommentRepository;
+import com.sparta.viewfinder.like.repository.LikeRepository;
 import com.sparta.viewfinder.post.Post;
 import com.sparta.viewfinder.post.PostRepository;
+import com.sparta.viewfinder.post.dto.PostResponseDto;
 import com.sparta.viewfinder.user.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,6 +33,7 @@ public class LikeService {
 
     private static final String CREATE_LIKE = "좋아요가 등록되었습니다.";
     private static final String CANCEL_LIKE = "좋아요가 취소되었습니다.";
+    private static final int PAGE_SIZE = 5;
 
     @Transactional
     public LikeResponseDto postLikeToggle(Long contentId, User user) {
@@ -94,5 +102,27 @@ public class LikeService {
                     CREATE_LIKE);
         }
         return responseDto;
+    }
+
+    public Page<PostResponseDto> getLikedPosts(int page, User user) {
+        String sortBy = "createdAt";
+        Sort.Direction direction = Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE, sort);
+
+        Page<Post> postList = likeRepository.searchLikedPost(user, pageable);
+
+        return postList.map(PostResponseDto::new);
+    }
+
+    public Page<CommentResponseDto> getLikedComments(int page, User user) {
+        String sortBy = "createdAt";
+        Sort.Direction direction = Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE, sort);
+
+        Page<Comment> commentList = likeRepository.searchLikedComment(user, pageable);
+
+        return commentList.map(CommentResponseDto::new);
     }
 }
