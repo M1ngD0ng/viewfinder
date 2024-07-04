@@ -10,4 +10,8 @@ public interface LikeRepositoryQuery {
     Page<Post> searchLikedPost(User user, Pageable pageable);
 
     Page<Comment> searchLikedComment(User user, Pageable pageable);
+
+    Long countLikedPost(User user);
+
+    Long countLikedComment(User user);
 }

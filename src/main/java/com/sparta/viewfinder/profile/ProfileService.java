@@ -2,10 +2,9 @@ package com.sparta.viewfinder.profile;
 
 import com.sparta.viewfinder.exception.exception.NotFoundException;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
-import com.sparta.viewfinder.profile.dto.ProfileAllResponseDto;
-import com.sparta.viewfinder.profile.dto.ProfileDetailResponseDto;
-import com.sparta.viewfinder.profile.dto.ProfileUpdateRequestDto;
-import com.sparta.viewfinder.profile.dto.ProfileUpdateResponseDto;
+import com.sparta.viewfinder.like.repository.LikeRepository;
+import com.sparta.viewfinder.like.repository.LikeRepositoryQueryImpl;
+import com.sparta.viewfinder.profile.dto.*;
 import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import com.sparta.viewfinder.security.UserDetailsImpl;
@@ -20,6 +19,7 @@ import java.util.List;
 public class ProfileService {
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;
+    private final LikeRepository likeRepository;
 
     public List<ProfileAllResponseDto> getAllProfiles() {
         List<Profile> profileAllResponseDtoList = profileRepository.findAll();
@@ -43,5 +43,14 @@ public class ProfileService {
 
         profile.update(profileUpdateRequestDto);
         return new ProfileUpdateResponseDto(profile);
+    }
+
+    public ProfileMyPageResponseDto getMyPage(User user) {
+        Profile profile = profileRepository.findByUserId(user.getId()).orElseThrow(
+                ()-> new NotFoundException(UserErrorCode.USER_NOT_FOUND)
+        );
+        return new ProfileMyPageResponseDto(profile,
+                likeRepository.countLikedPost(user),
+                likeRepository.countLikedComment(user));
     }
 }

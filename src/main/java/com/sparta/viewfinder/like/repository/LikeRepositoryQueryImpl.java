@@ -39,14 +39,7 @@ public class LikeRepositoryQueryImpl implements LikeRepositoryQuery {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        long totalSize = jpaQueryFactory.select(Wildcard.count)
-                .from(like)
-                .join(post).on(like.contentId.eq(post.id))
-                .where(
-                        like.user.id.eq(user.getId())
-                                .and(like.contentsType.eq(ContentsTypeEnum.POST))
-                )
-                .fetch().get(0);
+        Long totalSize = countLikedPost(user);
         return new PageImpl<>(postList, pageable, totalSize);
     }
 
@@ -67,7 +60,30 @@ public class LikeRepositoryQueryImpl implements LikeRepositoryQuery {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        long totalSize = jpaQueryFactory.select(Wildcard.count)
+        Long totalSize = countLikedComment(user);
+        return new PageImpl<>(postList, pageable, totalSize);
+    }
+    @Override
+    public Long countLikedPost(User user){
+        QPost post = QPost.post;
+        QLike like = QLike.like;
+
+        return jpaQueryFactory.select(Wildcard.count)
+                .from(like)
+                .join(post).on(like.contentId.eq(post.id))
+                .where(
+                        like.user.id.eq(user.getId())
+                                .and(like.contentsType.eq(ContentsTypeEnum.POST))
+                )
+                .fetch().get(0);
+    }
+
+    @Override
+    public Long countLikedComment(User user){
+        QComment comment = QComment.comment;
+        QLike like = QLike.like;
+
+        return jpaQueryFactory.select(Wildcard.count)
                 .from(like)
                 .join(comment).on(like.contentId.eq(comment.id))
                 .where(
@@ -75,7 +91,6 @@ public class LikeRepositoryQueryImpl implements LikeRepositoryQuery {
                                 .and(like.contentsType.eq(ContentsTypeEnum.COMMENT))
                 )
                 .fetch().get(0);
-        return new PageImpl<>(postList, pageable, totalSize);
     }
 }
 
