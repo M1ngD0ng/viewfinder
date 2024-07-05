@@ -16,24 +16,34 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class FollowRepositoryQueryImpl implements FollowRepositoryQuery{
+public class FollowRepositoryQueryImpl implements FollowRepositoryQuery {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public Page<Post> searchFollowedPost(User user, Pageable pageable) {
+    public Page<Post> searchFollowedPost(User user, String sortBy, Pageable pageable) {
         QPost post = QPost.post;
         QFollow follow = QFollow.follow;
 
-        List<Post> postList = jpaQueryFactory.select(post)
+        var query = jpaQueryFactory.select(post)
                 .from(follow)
                 .join(post).on(follow.followee.id.eq(post.user.id))
                 .where(
                         follow.follower.id.eq(user.getId())
-                )
-                .orderBy(post.createdAt.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
+                );
+
+        List<Post> postList;
+        if (sortBy.equals("createdAt")) {
+            postList = query.orderBy(post.createdAt.desc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+        } else {
+            postList = query.orderBy(post.user.name.asc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetch();
+        }
+
         Long totalSize = countFollowedPost(user);
         return new PageImpl<>(postList, pageable, totalSize);
     }

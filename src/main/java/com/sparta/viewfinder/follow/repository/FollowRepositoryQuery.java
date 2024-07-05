@@ -6,6 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface FollowRepositoryQuery {
-    Page<Post> searchFollowedPost(User user, Pageable pageable);
+    Page<Post> searchFollowedPost(User user, String sortBy, Pageable pageable);
     Long countFollowedPost(User user);
 }

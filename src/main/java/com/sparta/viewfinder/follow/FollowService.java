@@ -34,28 +34,28 @@ public class FollowService {
         User targetUser = userRepository.findById(userId).orElseThrow(
                 () -> new NotFoundException(UserErrorCode.USER_NOT_FOUND)
         );
-        if(targetUser.getId().equals(user.getId())){
+        if (targetUser.getId().equals(user.getId())) {
             throw new CommonException(FollowErrorCode.SELF_FOLLOW_ERROR);
         }
 
         Optional<Follow> isFollowed = followRepository.findByFollower_IdAndFollowee_Id(user.getId(), targetUser.getId());
-        if(isFollowed.isPresent()){
+        if (isFollowed.isPresent()) {
             followRepository.delete(isFollowed.get());
             return UNFOLLOW_SUCCESS;
-        }else{
+        } else {
             Follow newFollow = new Follow(user, targetUser);
             followRepository.save(newFollow);
             return FOLLOW_SUCCESS;
         }
     }
 
-    public Page<PostResponseDto> getFollowedPost(int page, User user) {
-        String sortBy = "createdAt";
+    public Page<PostResponseDto> getFollowedPost(int page, String sortBy, User user) {
         Sort.Direction direction = Sort.Direction.DESC;
+        if(sortBy.equals("username")) sortBy="user.name";
         Sort sort = Sort.by(direction, sortBy);
         Pageable pageable = PageRequest.of(page, PAGE_SIZE, sort);
 
-        Page<Post> postList = followRepository.searchFollowedPost(user, pageable);
+        Page<Post> postList = followRepository.searchFollowedPost(user, sortBy, pageable);
 
         return postList.map(PostResponseDto::new);
     }
