@@ -1,13 +1,19 @@
 package com.sparta.viewfinder.follow;
 
 import com.sparta.viewfinder.exception.errorcode.FollowErrorCode;
-import com.sparta.viewfinder.exception.errorcode.LikeErrorCode;
 import com.sparta.viewfinder.exception.errorcode.UserErrorCode;
 import com.sparta.viewfinder.exception.exception.CommonException;
 import com.sparta.viewfinder.exception.exception.NotFoundException;
+import com.sparta.viewfinder.follow.repository.FollowRepository;
+import com.sparta.viewfinder.post.Post;
+import com.sparta.viewfinder.post.dto.PostResponseDto;
 import com.sparta.viewfinder.user.User;
 import com.sparta.viewfinder.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +23,8 @@ import java.util.Optional;
 public class FollowService {
     private static final String FOLLOW_SUCCESS = "팔로우가 성공적으로 수행되었습니다.";
     private static final String UNFOLLOW_SUCCESS = "팔로우 취소가 성공적으로 수행되었습니다.";
+    private static final int PAGE_SIZE = 5;
+
     private final UserRepository userRepository;
     private final FollowRepository followRepository;
 
@@ -39,5 +47,16 @@ public class FollowService {
             followRepository.save(newFollow);
             return FOLLOW_SUCCESS;
         }
+    }
+
+    public Page<PostResponseDto> getFollowedPost(int page, User user) {
+        String sortBy = "createdAt";
+        Sort.Direction direction = Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(page, PAGE_SIZE, sort);
+
+        Page<Post> postList = followRepository.searchFollowedPost(user, pageable);
+
+        return postList.map(PostResponseDto::new);
     }
 }
